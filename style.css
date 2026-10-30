@@ -33,3 +33,7 @@ dialog{border:0;padding:35px;max-width:min(620px,calc(100vw - 32px));width:620px
 .service-rows summary{padding-right:13px}.service-rows summary>span:last-child{flex-shrink:0}
 @media(max-width:800px){.q-scene img{mask-image:linear-gradient(to bottom,transparent,#000 17%)}html[lang=es] .m-top h1{font-size:clamp(44px,14.3vw,105px)}}
 @media(max-width:519px){.m-top h1{font-size:clamp(58px,22vw,90px)}html[lang=en] .b-top h1{font-size:clamp(62px,20.8vw,92px)}}
+/* Continuous image edges and a separate portrait stage on smaller screens. */
+.m-object img,.g-aligner img{mask-image:linear-gradient(90deg,transparent,#000 17%,#000 88%,transparent),linear-gradient(0deg,transparent,#000 24%,#000 76%,transparent);mask-composite:intersect}
+@media(max-width:800px){.m-doctor-stamp{right:80px}.c-hero{min-height:0;display:flex;flex-direction:column;padding-bottom:55px}.c-heading{order:1;padding-bottom:0}.c-portrait{position:relative;order:2;right:auto;top:auto;bottom:auto;width:100%;height:550px;margin-top:10px}.c-portrait img{object-position:center 20%}.c-portrait:before{background:linear-gradient(180deg,#132438,transparent 23%)}.c-signature{bottom:98px}.c-meta{bottom:22px}}
+@media(max-width:800px){.g-aligner{top:300px;right:-10%;width:110%;height:350px}}
