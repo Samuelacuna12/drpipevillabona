@@ -2,7 +2,7 @@
   "concept_by": "Samuel Acuña",
   "practice": "Dr. Pipe Villabona",
   "official_website": "https://drpipevillabona.com/",
-  "reviewed": "2026-10-29",
+  "reviewed": "2026-10-30",
   "images": [
     {
       "file": "assets/hero.webp",
@@ -40,5 +40,32 @@
       "original_caption": "Bar"
     }
   ],
-  "note": "Public images used for an independent commercial demonstration. Image ownership remains with the original rights holders. No clinical outcome is promised."
+  "note": "Public images used for an independent commercial demonstration. Image ownership remains with the original rights holders. No clinical outcome is promised.",
+  "medical_revision": [
+    {
+      "file": "assets/medical-clinical.webp",
+      "source_url": "https://drpipevillabona.com/wp-content/uploads/2024/08/Snapinsta_app_357398298_18290405374184866_1506916211791446838_n_1080.jpg.webp",
+      "source_page": "https://drpipevillabona.com/treatments/",
+      "role": "clinical"
+    },
+    {
+      "file": "assets/medical-clinic.webp",
+      "source_url": "https://drpipevillabona.com/wp-content/uploads/2024/08/IMG_8146-800x1024.jpg",
+      "source_page": "https://drpipevillabona.com/",
+      "role": "clinic"
+    },
+    {
+      "file": "assets/medical-before.webp",
+      "source_url": "https://drpipevillabona.com/wp-content/uploads/2024/12/IMG_1884-scaled.webp",
+      "source_page": "https://drpipevillabona.com/",
+      "role": "before"
+    },
+    {
+      "file": "assets/medical-after.webp",
+      "source_url": "https://drpipevillabona.com/wp-content/uploads/2024/12/IMG_2357-scaled.webp",
+      "source_page": "https://drpipevillabona.com/",
+      "role": "after"
+    }
+  ],
+  "design_status": "Medical identity revision following user feedback"
 }
