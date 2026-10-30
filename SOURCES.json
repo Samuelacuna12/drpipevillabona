@@ -67,5 +67,11 @@
       "role": "after"
     }
   ],
-  "design_status": "Medical identity revision following user feedback"
+  "design_status": "Medical identity revision following user feedback",
+  "v4_editorial": {
+    "asset": "assets/editorial-v4.webp",
+    "created_with": "OpenAI built-in image_gen",
+    "role": "Generated editorial illustration; not a real patient, staff member, clinical result or actual facility",
+    "date": "2026-10-30"
+  }
 }

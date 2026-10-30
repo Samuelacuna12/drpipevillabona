@@ -84,3 +84,28 @@
  document.querySelectorAll('[data-video]').forEach(link=>link.addEventListener('click',e=>{e.preventDefault();const frame=document.createElement('iframe');frame.src='https://www.youtube-nocookie.com/embed/'+link.dataset.video+'?autoplay=1';frame.title='Dr. Camilo Lemos — video publicado';frame.allow='autoplay; encrypted-media; picture-in-picture';frame.allowFullscreen=true;link.parentElement.replaceChildren(frame);}));
  document.querySelectorAll('.treatment-panel [data-book]').forEach(button=>button.addEventListener('click',()=>{document.querySelector('#demo-service').value=button.closest('.treatment-panel').id.split('-').pop();}));
 })();
+
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+  const hero = document.querySelector('main > section');
+  const media = hero?.querySelector('.m-object img,.s-circle img,.g-aligner img,.q-scene img,.p-photo img,.b-smiles img,.c-portrait img,.h-portrait img');
+  let queued = false;
+  function depth() {
+    queued = false;
+    if (!media || reduce.matches || innerWidth < 801) return;
+    const r = hero.getBoundingClientRect();
+    if (r.bottom < 0) return;
+    const progress = Math.min(1, Math.max(0, -r.top / r.height));
+    media.style.translate = `0 ${progress * 38}px`;
+  }
+  addEventListener('scroll', () => { if (!queued) { queued = true; requestAnimationFrame(depth); } }, {passive:true});
+  reduce.addEventListener('change', () => { if (media) media.style.translate=''; });
+  document.querySelectorAll('.service-rows details').forEach(d => d.addEventListener('toggle', () => {
+    if (!d.open) return;
+    d.parentElement.querySelectorAll('details').forEach(other => { if (other !== d) other.open = false; });
+  }));
+  document.querySelectorAll('.service-rows details').forEach((d,i) => d.querySelector('[data-book]')?.addEventListener('click', () => {
+    const select = document.querySelector('#demo-service');
+    if (select && i < select.options.length) select.value = String(i);
+  }));
+})();
