@@ -109,3 +109,24 @@
     if (select && i < select.options.length) select.value = String(i);
   }));
 })();
+
+(() => {
+  document.querySelectorAll('[data-interest]').forEach(button => button.addEventListener('click', () => {
+    document.querySelector('#demo-service').value = button.dataset.interest;
+  }));
+  document.querySelector('[data-orient]')?.addEventListener('click', () => {
+    document.querySelector('#demo-country').selectedIndex = document.querySelector('#start-country').value === 'Canada' ? 1 : 0;
+    document.querySelector('#demo-service').value = document.querySelector('#start-interest').value;
+  });
+  const track = document.querySelector('.p-slide-track');
+  if (track) {
+    const slides = [...track.querySelectorAll('.p-slide')], previous = document.querySelector('[data-slide=prev]'), next = document.querySelector('[data-slide=next]');
+    let current = 0, queued = false;
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+    function show(index) { const x = Math.max(0,Math.min(slides.length-1,index)); track.scrollTo({left:slides[x].offsetLeft-slides[0].offsetLeft,behavior:reduced.matches?'instant':'smooth'}); }
+    function sync() { queued=false; let nearest=0,delta=Infinity; slides.forEach((s,i)=>{const d=Math.abs(s.offsetLeft-slides[0].offsetLeft-track.scrollLeft);if(d<delta){delta=d;nearest=i}});current=nearest;document.querySelector('#slide-count').textContent=String(current+1).padStart(2,'0')+' / 03';previous.disabled=current===0;next.disabled=current===slides.length-1; }
+    previous.addEventListener('click',()=>show(current-1));next.addEventListener('click',()=>show(current+1));
+    track.addEventListener('scroll',()=>{if(!queued){queued=true;requestAnimationFrame(sync)}},{passive:true});
+    track.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();show(current+1)}if(e.key==='ArrowLeft'){e.preventDefault();show(current-1)}});sync();
+  }
+})();
