@@ -130,3 +130,44 @@
     track.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();show(current+1)}if(e.key==='ArrowLeft'){e.preventDefault();show(current-1)}});sync();
   }
 })();
+
+(() => {
+  const groups = new Map();
+  document.querySelectorAll('[data-switch]').forEach(button => {
+    const group = button.dataset.switch;
+    if (!groups.has(group)) groups.set(group, []);
+    groups.get(group).push(button);
+  });
+  function select(button, focus = false) {
+    groups.get(button.dataset.switch).forEach(item => {
+      const active = item === button;
+      item.setAttribute('aria-selected', String(active));
+      item.tabIndex = active ? 0 : -1;
+      document.getElementById(item.getAttribute('aria-controls')).hidden = !active;
+    });
+    if (focus) button.focus();
+  }
+  groups.forEach(buttons => buttons.forEach((button, i) => {
+    button.addEventListener('click', () => select(button));
+    button.addEventListener('keydown', e => {
+      let next;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = (i + 1) % buttons.length;
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = (i + buttons.length - 1) % buttons.length;
+      if (e.key === 'Home') next = 0;
+      if (e.key === 'End') next = buttons.length - 1;
+      if (next !== undefined) { e.preventDefault(); select(buttons[next], true); }
+    });
+  }));
+  // Deep links open the relevant clinical route before navigation scrolls to it.
+  function routeForHash(hash) {
+    const index = hash === '#surgery' ? 0 : hash === '#hair' ? 1 : null;
+    if (index !== null && groups.has('routes')) select(groups.get('routes')[index]);
+  }
+  document.querySelectorAll('a[href="#hair"],a[href="#surgery"]').forEach(a => a.addEventListener('click', () => routeForHash(a.hash)));
+  routeForHash(location.hash);
+  window.addEventListener('hashchange', () => routeForHash(location.hash));
+  const preparation = [...document.querySelectorAll('[data-preparation]')];
+  preparation.forEach(input => input.addEventListener('change', () => {
+    document.querySelector('#prep-count').textContent = preparation.filter(x => x.checked).length + ' / ' + preparation.length;
+  }));
+})();
