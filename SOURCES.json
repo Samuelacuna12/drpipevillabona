@@ -1,0 +1,44 @@
+{
+  "concept_by": "Samuel Acuña",
+  "practice": "Dr. Pipe Villabona",
+  "official_website": "https://drpipevillabona.com/",
+  "reviewed": "2026-10-29",
+  "images": [
+    {
+      "file": "assets/hero.webp",
+      "source_url": "https://drpipevillabona.com/wp-content/uploads/2024/08/IMG_3180.jpg",
+      "source_page": "https://drpipevillabona.com/",
+      "role": "hero",
+      "original_caption": ""
+    },
+    {
+      "file": "assets/portrait.webp",
+      "source_url": "https://drpipevillabona.com/wp-content/uploads/2024/08/Consultorio-Dr-Pipe.jpg",
+      "source_page": "https://drpipevillabona.com/",
+      "role": "portrait",
+      "original_caption": "embedded"
+    },
+    {
+      "file": "assets/detail.webp",
+      "source_url": "https://drpipevillabona.com/wp-content/uploads/2024/08/IMG_3201.jpg",
+      "source_page": "https://drpipevillabona.com/",
+      "role": "detail",
+      "original_caption": ""
+    },
+    {
+      "file": "assets/case1.webp",
+      "source_url": "https://drpipevillabona.com/wp-content/uploads/2024/08/IMG_3182.jpg",
+      "source_page": "https://drpipevillabona.com/",
+      "role": "case1",
+      "original_caption": ""
+    },
+    {
+      "file": "assets/case2.webp",
+      "source_url": "https://drpipevillabona.com/wp-content/uploads/2024/08/IMG_3491-800x1024.jpg",
+      "source_page": "https://drpipevillabona.com/",
+      "role": "case2",
+      "original_caption": "Bar"
+    }
+  ],
+  "note": "Public images used for an independent commercial demonstration. Image ownership remains with the original rights holders. No clinical outcome is promised."
+}
